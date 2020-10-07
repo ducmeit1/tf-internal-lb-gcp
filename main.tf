@@ -84,7 +84,11 @@ resource "google_compute_health_check" "http" {
   name    = format("%s-hc", var.name)
 
   http_health_check {
-    port = var.health_check_port
+    host          = var.health_check_host
+    port          = var.health_check_port
+    request_path  = var.request_path
+    proxy_header  = var.proxy_header
+    response      = var.response
   }
 }
 

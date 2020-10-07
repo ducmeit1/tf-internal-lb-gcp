@@ -28,6 +28,31 @@ variable "health_check_port" {
   type        = number
 }
 
+variable "health_check_host" {
+  description = "Host to perform health checks on."
+  type        = string
+  default     = ""
+}
+
+variable "health_check_request_path" {
+  description = "Request path to perform health checks on."
+  type        = string
+  default     = ""
+}
+
+variable "health_check_proxy_header" {
+  description = "Proxy header to perform health checks on."
+  type        = string
+  default     = ""
+}
+
+
+variable "health_check_response" {
+  description = "Response to perform health checks on."
+  type        = string
+  default     = ""
+}
+
 variable "backends" {
   description = "List of backends, should be a map of key-value pairs for each backend, must have the 'group' key."
   type        = list(map(string))
