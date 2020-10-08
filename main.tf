@@ -38,9 +38,9 @@ resource "google_compute_forwarding_rule" "default" {
 # ------------------------------------------------------------------------------
 
 resource "google_compute_region_backend_service" "default" {
-  project          = var.project
+  project          = var.gcp_project
   name             = var.name
-  region           = var.region
+  region           = var.gcp_region
   protocol         = var.protocol
   timeout_sec      = 10
   session_affinity = var.session_affinity
@@ -69,7 +69,7 @@ resource "google_compute_region_backend_service" "default" {
 resource "google_compute_health_check" "tcp" {
   count = var.http_health_check ? 0 : 1
 
-  project = var.project
+  project = var.gcp_project
   name    = format("%s-hc", var.name)
 
   tcp_health_check {
@@ -80,7 +80,7 @@ resource "google_compute_health_check" "tcp" {
 resource "google_compute_health_check" "http" {
   count = var.http_health_check ? 1 : 0
 
-  project = var.project
+  project = var.gcp_project
   name    = format("%s-hc", var.name)
 
   http_health_check {
@@ -117,7 +117,7 @@ resource "google_compute_firewall" "load_balancer" {
 
 # Health check firewall allows ingress tcp traffic from the health check IP addresses
 resource "google_compute_firewall" "health_check" {
-  project = var.network_project == "" ? var.project : var.network_project
+  project = var.network_project == "" ? var.gcp_project : var.network_project
   name    = format("%s-hc", var.name)
   network = var.gcp_network
 
