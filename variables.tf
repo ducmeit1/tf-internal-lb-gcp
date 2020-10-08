@@ -99,7 +99,7 @@ variable "service_label" {
   default     = ""
 }
 
-variable "gcp_network_project" {
+variable "gcp_network_project_id" {
   description = "The name of the GCP Project where the network is located. Useful when using networks shared between projects. If empty, var.project will be used."
   type        = string
   default     = ""

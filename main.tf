@@ -117,7 +117,7 @@ resource "google_compute_firewall" "load_balancer" {
 
 # Health check firewall allows ingress tcp traffic from the health check IP addresses
 resource "google_compute_firewall" "health_check" {
-  project = var.network_project == "" ? var.gcp_project : var.network_project
+  project = var.gcp_network_project_id == "" ? var.gcp_project : var.gcp_network_project_id
   name    = format("%s-hc", var.name)
   network = var.gcp_network
 
