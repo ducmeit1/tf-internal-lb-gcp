@@ -10,7 +10,7 @@ terraform {
 
 # ------------------------------------------------------------------------------
 # CREATE FORWARDING RULE
-# ------------------------------------------------------------------------------
+# ----------------------------------`--------------------------------------------
 
 resource "google_compute_forwarding_rule" "default" {
   provider              = google-beta
@@ -24,6 +24,8 @@ resource "google_compute_forwarding_rule" "default" {
   ip_address            = var.ip_address
   ip_protocol           = var.protocol
   ports                 = var.ports
+  allow_global_access   = var.allow_global_access
+  network_tier          = var.network_tier
 
   # If service label is specified, it will be the first label of the fully qualified service name.
   # Due to the provider failing with an empty string, we're setting the name as service label default

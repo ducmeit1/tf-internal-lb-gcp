@@ -134,3 +134,15 @@ variable "custom_labels" {
   type        = map(string)
   default     = {}
 }
+
+variable "allow_global_access" {
+  description = "Allow global access instead in regional. Other regional could access to the load balancer."
+  type        = bool
+  default     = false
+}
+
+variable "network_tier" {
+  description = "Network tier to reverse IP Address. Use PREMIUM or STANDARD."
+  type        = string
+  default     = "PREMIUM"
+}
