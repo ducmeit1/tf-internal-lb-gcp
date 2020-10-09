@@ -43,7 +43,7 @@ variable "health_check_request_path" {
 variable "health_check_proxy_header" {
   description = "Proxy header to perform health checks on."
   type        = string
-  default     = ""
+  default     = "NONE"
 }
 
 
